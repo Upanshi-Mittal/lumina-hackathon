@@ -1,20 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Signup from './pages/signup.jsx'
-import './App.css'
-import {Route, Routes} from 'react-router-dom'
-import home from './pages/home.jsx'
-function App() {
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
+import Login from "./pages/Login.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+
+
+export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Signup />} />
-        <Route path="/home" element={<home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-    </>
-  )
+    </BrowserRouter>
+  );
 }
-
-export default App
