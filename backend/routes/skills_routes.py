@@ -1,6 +1,6 @@
 # backend/routes/skills_routes.py
 from fastapi import APIRouter, UploadFile, HTTPException
-from hackmate.skills import SkillIndex
+from backend.hackmate.skills import SkillIndex
 import json
 
 router = APIRouter(prefix="/skills", tags=["Skills"])

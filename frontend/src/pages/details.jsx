@@ -1,66 +1,83 @@
-import {Navigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+
 const Details = () => {
-    const navigate = Navigate();
-    const detailsSave = async (e) => {
+    const navigate = useNavigate();
+
+    const detailsSave = (e) => {
         e.preventDefault();
-        const res = await fetch('http://localhost:5000/details', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                personalEmail: e.target.personalEmail.value,
-                phoneNumber: e.target.phoneNumber.value,
-                githubProfile: e.target.githubProfile.value,
-                linkedinProfile: e.target.linkedinProfile.value,
-                skills: e.target.skills.value,
-                portfolio: e.target.portfolio.value,
-            }),
-        });
-        const data = await res.json();
-        if (data.success) {
-            navigate('/home');
-        }
-        console.log(data);
+
+        // ✅ Collect form data
+        const userDetails = {
+            personalEmail: e.target.personalEmail.value,
+            phoneNumber: e.target.phoneNumber.value,
+            githubProfile: e.target.githubProfile.value,
+            linkedinProfile: e.target.linkedinProfile.value,
+            skills: e.target.skills.value,
+            portfolio: e.target.portfolio.value,
+        };
+
+        // ✅ Save details to localStorage
+        localStorage.setItem("userDetails", JSON.stringify(userDetails));
+
+        // ✅ Create prototype session for Dashboard
+        localStorage.setItem(
+            "jiit_session",
+            JSON.stringify({
+                name: userDetails.personalEmail.split("@")[0],  // username from email
+                enrollmentno: "Prototype123",
+                instituteid: "JIIT",
+            })
+        );
+
+        // ✅ Redirect to home page
+        navigate("/home");
     };
+
     return (
-        <div>
+        <div style={{ padding: 40 }}>
             <form onSubmit={detailsSave}>
                 <h1>Details Page</h1>
+
                 <label>
-                    personal email:
-                    <input type="email" name="personalEmail" id="personalEmail" required />
+                    Personal Email:
+                    <input type="email" name="personalEmail" required />
                 </label>
-                <br />
+                <br /><br />
+
                 <label>
-                    phone number:
-                    <input type="tel" name="phoneNumber" id="phoneNumber" required />
+                    Phone Number:
+                    <input type="tel" name="phoneNumber" required />
                 </label>
-                <br />
+                <br /><br />
+
                 <label>
-                    github profile:
-                    <input type="url" name="githubProfile" id="githubProfile" required />
+                    GitHub Profile:
+                    <input type="url" name="githubProfile" required />
                 </label>
-                <br />
+                <br /><br />
+
                 <label>
-                    linkedin profile:
-                    <input type="url" name="linkedinProfile" id="linkedinProfile" required />
+                    LinkedIn Profile:
+                    <input type="url" name="linkedinProfile" required />
                 </label>
-                <br />
+                <br /><br />
+
                 <label>
                     Skills:
-                    <input type="text" name="skills" id="skills" required />
+                    <input type="text" name="skills" required />
                 </label>
-                <br />
+                <br /><br />
+
                 <label>
                     Portfolio:
-                    <input type="url" name="portfolio" id="portfolio" required />
+                    <input type="url" name="portfolio" required />
                 </label>
-                <br />
-                <button type="submit">Submit</button>
-        </form>
-    </div >
-  )
-}
+                <br /><br />
 
-export default Details
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    );
+};
+
+export default Details;

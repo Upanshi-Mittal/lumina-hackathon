@@ -2,9 +2,9 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict, Any
-from hackmate.assign import assign_candidates_to_roles
-from hackmate.skills import SkillIndex
-from hackmate.scorer import score_candidate_for_role
+from backend.hackmate.assign import assign_candidates_to_roles
+from backend.hackmate.skills import SkillIndex
+from backend.hackmate.scorer import score_candidate_for_role
 
 router = APIRouter(prefix="/candidates", tags=["Candidates"])
 

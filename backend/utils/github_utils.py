@@ -1,14 +1,11 @@
-# backend/utils/github_utils.py
-from hackmate.github_signals import compute_github_features
 from typing import Dict, Any
+# adjust import to your actual location:
+# if your file is hackmate/github_signals.py:
+from backend.hackmate.github_signals import fetch_github_signals_with_token
 
-def analyze_github_profile(username: str) -> Dict[str, Any]:
-    """
-    Uses hackmate.github_signals to fetch and compute
-    metrics from a user's GitHub profile.
-    """
+def analyze_github_with_token(token: str) -> Dict[str, Any]:
     try:
-        result = compute_github_features(username)
-        return {"username": username, "features": result}
+        data = fetch_github_signals_with_token(token)
+        return {"features": data}
     except Exception as e:
         return {"error": str(e)}
