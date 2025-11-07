@@ -60,7 +60,7 @@ npm run dev
 
 ## 🔥 Key Features
 
-✅ 1. JIIT Login Integration
+## ✅ 1. JIIT Login Integration
 Students can log in using:
 Enrollment number
 Webkiosk password
