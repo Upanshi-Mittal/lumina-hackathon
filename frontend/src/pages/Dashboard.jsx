@@ -118,6 +118,7 @@ export default function DashboardPremium() {
 
   // ✅ ✅ ✅ CENTERED DASHBOARD WRAPPER
   return (
+    <div className="flex flex-col items-center justify-center w-80vw h-100vh bg-gradient-to-b from-gray-900 via-black to-gray-900">
     <div className="min-h-screen w-full flex items-center justify-center  
         bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
         from-slate-900 via-slate-950 to-black p-6">
@@ -133,19 +134,18 @@ export default function DashboardPremium() {
           {/* ---------- Sidebar ---------- */}
           <aside className="hidden md:flex md:w-64 lg:w-72 flex-col gap-4 p-5
             bg-white/5 backdrop-blur-xl border-r border-white/10">
-
             <div className="flex items-center gap-3 px-2 py-2">
               <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400" />
               <div className="text-lg font-semibold tracking-wide">Hackmate</div>
             </div>
 
             <nav className="mt-2 flex flex-col gap-2">
-              <SidebarLink icon={<LayoutDashboard size={18} />} label="Dashboard" to="#" active />
-              <SidebarLink icon={<Github size={18} />} label="GitHub Analysis" to="/github" />
-              <SidebarLink icon={<Sparkles size={18} />} label="Skills" to="/skills" />
-              <SidebarLink icon={<Users2 size={18} />} label="Team Builder" to="/team" />
-              <SidebarLink icon={<LineChart size={18} />} label="Score" to="/score" />
-              <SidebarLink icon={<Settings size={18} />} label="Settings" to="/settings" />
+              <SidebarLink icon={<LayoutDashboard size={18} marginRight={8} />} label="Dashboard.  " to="#" active />
+              <SidebarLink icon={<Github size={18} marginRight={8} />} label="GitHub Analysis.  " to="/github" />
+              <SidebarLink icon={<Sparkles size={18} marginRight={8} />} label="Skills.  " to="/skills" />
+              <SidebarLink icon={<Users2 size={18} marginRight={8} />} label="Team Builder.  " to="/team" />
+              <SidebarLink icon={<LineChart size={18} marginRight={8} />} label="Score.  " to="/score" />
+              <SidebarLink icon={<Settings size={18} marginRight={8} />} label="Settings.  " to="/settings" />
             </nav>
 
             <div className="mt-auto">
@@ -298,6 +298,7 @@ export default function DashboardPremium() {
           </main>
         </div>
       </div>
+    </div>
     </div>
   );
 }

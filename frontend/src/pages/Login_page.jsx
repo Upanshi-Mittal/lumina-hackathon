@@ -37,9 +37,10 @@ export default function LoginPage() {
   return (
     <div className="login-container">
 
+      <h1 className="login-title" >Hackmate</h1>
       <form onSubmit={handleLogin} className="login-card">
 
-        <h2 className="title">JIIT Login</h2>
+        <h2 className="title" >JIIT Login</h2>
 
         <input
           type="text"
@@ -55,9 +56,10 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="input"
+          style={{ marginBottom: "45px" }}
         />
 
-        <button disabled={loading} type="submit" className="btn">
+        <button disabled={loading} type="submit" className="btn" style={{ marginBottom: "0px" }}>
           {loading ? "Logging in..." : "Login"}
         </button>
 
